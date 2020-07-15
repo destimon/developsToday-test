@@ -1,5 +1,5 @@
 import { put, takeEvery, call } from 'redux-saga/effects'
-import { getPosts } from '../actions/postActions';
+import { getPosts, setPostsLoading } from '../actions/postActions';
 
 import { GET_POSTS_ASYNC } from './types.saga';
 
@@ -12,6 +12,7 @@ function* getPostsAsync() {
   try {
     const { data } = yield call(() => (axios.get('https://simple-blog-api.crew.red/posts')))
     
+    yield put(setPostsLoading());
     yield put(getPosts(data));
   } catch (err) {
 
