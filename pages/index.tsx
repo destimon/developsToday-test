@@ -1,19 +1,17 @@
-import Link from 'next/link'
 import Layout from '../components/Layout'
-import withRedux from "next-redux-wrapper";
-import {wrapper} from '../store/index';
 import { NextPage } from 'next';
-import { getPostsAsync } from '../store/actions/postActions';
-import { connect, Provider } from 'react-redux';
+import { connect } from 'react-redux';
 import { State } from '../store/types';
-import { useEffect } from 'react';
 import Posts from '../components/Post/Posts'
+import { Container } from '@material-ui/core';
 
 const IndexPage: NextPage = () => {
   return (
     <Layout>
-      <h1>Hello!</h1>
-      <Posts />
+      <Container>
+        <h1>Posts page</h1>
+        <Posts />
+      </Container>
     </Layout>
   )
 }

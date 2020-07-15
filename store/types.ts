@@ -3,9 +3,11 @@ import {
 } from '../interfaces/index';
 
 export const GET_POSTS = 'GET_POSTS';
+export const SET_POSTS_LOADING = 'SET_POSTS_LOADING';
 
-export interface State {
-  posts: Post[]
+export interface PostState {
+  posts: Post[],
+  postsLoading: boolean
 }
 
 export interface StoreState {
@@ -19,4 +21,8 @@ interface GetPosts {
   payload: Post[]
 }
 
-export type PostActionTypes = GetPosts;
+interface SetPostsLoading {
+  type: typeof SET_POSTS_LOADING
+}
+
+export type PostActionTypes = GetPosts | SetPostsLoading;

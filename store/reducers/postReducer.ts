@@ -1,20 +1,27 @@
-import { PostActionTypes } from '../types';
+import { PostActionTypes, SET_POSTS_LOADING } from '../types';
 
 import {
-  State, GET_POSTS
+  PostState, GET_POSTS
 } from '../types';
 import { PostActionSagaTypes } from '../sagas/types.saga';
 
-const postState: State = {
-  posts: []
+const postState: PostState = {
+  posts: [],
+  postsLoading: false,
 }
 
-const postReducer = (state: State = postState, action: PostActionTypes | PostActionSagaTypes) => {
+const postReducer = (state: PostState = postState, action: PostActionTypes | PostActionSagaTypes) => {
   switch (action.type) {
+    case SET_POSTS_LOADING:
+      return {
+        ...state,
+        postsLoading: true
+      }
     case GET_POSTS:
       return {
         ...state,
-        posts: [ { id: 1, title: 'sad', body: 'sadsad'}]
+        posts: action.payload,
+        postsLoading: false
       };
     default:
       return state
