@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { GetServerSideProps } from 'next'
 
 interface Props {
   post_id: string
@@ -16,9 +17,14 @@ const post_id: React.FC<Props> = ({ post_id }) => {
   )
 }
 
-export async function getServerSideProps({ params: { post_id } }) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  if (context.params) {
+    return {
+      props: { post_id: context.params.post_id }, // will be passed to the page component as props
+    }
+  }
   return {
-    props: { post_id }, // will be passed to the page component as props
+    props: {}
   }
 }
 
