@@ -3,7 +3,7 @@ import { PostType } from "../../interfaces";
 export const GET_POSTS_ASYNC = 'GET_POSTS_ASYNC';
 export const ADD_POST_ASYNC = 'ADD_POST_ASYNC';
 
-interface AddPostAsync {
+export interface AddPostAsync {
   type: typeof ADD_POST_ASYNC,
   payload: PostType
 }
