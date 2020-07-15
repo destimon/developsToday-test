@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import PostAddIcon from '@material-ui/icons/PostAdd';
+import ButtonLink from './Widgets/ButtonLink';
 
 type Props = {
   children?: ReactNode
@@ -24,6 +25,8 @@ const Layout: React.FC<Props> = ({children}) => (
         <Typography variant="h6">
           Blog
         </Typography>
+        <ButtonLink href="/">Home</ButtonLink>
+        <ButtonLink href="/posts/new">New</ButtonLink>
       </Toolbar>
     </AppBar>
     </header>

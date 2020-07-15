@@ -9,7 +9,7 @@ const postState: PostState = {
   posts: [],
   postsLoading: false,
   addPostLoading: false,
-  addPostError: ''
+  addPostResult: ''
 }
 
 const postReducer = (state: PostState = postState, action: PostActionTypes | PostActionSagaTypes) => {
@@ -18,7 +18,8 @@ const postReducer = (state: PostState = postState, action: PostActionTypes | Pos
     case ADD_POST:
       return {
         ...state,
-        posts: [...state.posts, action.payload]
+        posts: [...state.posts, action.payload],
+        addPostResult: ''
       }
     case SET_ADD_POST_LOADING:
       return {
@@ -29,13 +30,13 @@ const postReducer = (state: PostState = postState, action: PostActionTypes | Pos
       return {
         ...state,
         addPostLoading: false,
-        addPostError: ''
+        addPostResult: 'Success!'
       }
     case ADD_POST_FAILURE:
       return {
         ...state,
         addPostLoading: false,
-        addPostError: 'Unable to add new post'
+        addPostResult: 'Unable to add new post'
       }
     // Get posts from API
     case SET_POSTS_LOADING:

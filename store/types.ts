@@ -16,7 +16,7 @@ export interface PostState {
   posts: PostType[],
   postsLoading: boolean,
   addPostLoading: boolean,
-  addPostError: string
+  addPostResult: string
 }
 
 export interface StoreState {

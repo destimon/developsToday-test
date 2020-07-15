@@ -6,18 +6,18 @@ import { FormikTextField } from 'formik-material-fields';
 import { Grid, Button, Typography } from '@material-ui/core';
 import { addPostAsync } from '../../store/actions/postActions';
 import { connect } from 'react-redux';
-import { PostState } from '../../store/types';
+import { PostState, StoreState } from '../../store/types';
 
 interface Props {
   addPostAsync: (formData: PostType) => void,
   post: {
-    postAddLoading: boolean,
-    postAddError: string
+    addPostLoading: boolean,
+    addPostResult: string
   }
 }
 
 const AddNewPost: React.FC<Props> = ({ 
-  addPostAsync, post: { postAddLoading, postAddError }
+  addPostAsync, post: { addPostLoading, addPostResult }
 }) => {
   const initialValues: PostType = {
     title: '',
@@ -73,18 +73,16 @@ const AddNewPost: React.FC<Props> = ({
 
             <Button fullWidth variant="contained" color="primary" type="submit">Submit</Button>
           </Form>
+          <Typography variant="h5">{ addPostResult }</Typography>
         </Grid>
       </Formik>
     </Layout>
   )
 }
 
-const mapStateToProps = (state: PostState) => {
+const mapStateToProps = (state: StoreState) => {
   return {
-    post: {
-      addPostLoading: state.addPostLoading,
-      addPostError: state.addPostError
-    }
+    post: state.post
   }
 }
 
