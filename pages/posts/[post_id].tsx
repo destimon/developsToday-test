@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { GetServerSideProps } from 'next'
 import axios from 'axios';
 import { PostType } from '../../interfaces';
+import Layout from '../../components/Layout';
+import { Typography } from '@material-ui/core';
 
 interface Props {
   post: PostType
@@ -12,14 +14,19 @@ const post_id: React.FC<Props> = ({ post }) => {
     console.log(post)
   }, [])
 
-  if (!post) {
-    return <p>Post doesn't exist</p>
-  }
-
   return (
-    <div>
-      <h2>[{post.id}] {post.title}</h2>
-    </div>
+    <Layout>
+      {
+        (post) ? 
+        (
+          <div>
+            <h2>[{post.id}] {post.title}</h2>
+          </div>
+        )
+        :
+        (<Typography>Post doesn't exist</Typography>)
+      }
+    </Layout>
   )
 }
 
