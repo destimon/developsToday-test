@@ -9,7 +9,7 @@ export type User = {
   name: string
 }
 
-export type Post = {
+export type PostType = {
   id: number,
   title: string,
   body: string,

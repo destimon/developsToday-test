@@ -7,7 +7,7 @@ import { PostActionSagaTypes } from '../sagas/types.saga';
 
 const postState: PostState = {
   posts: [],
-  postsLoading: false,
+  postsLoading: true,
 }
 
 const postReducer = (state: PostState = postState, action: PostActionTypes | PostActionSagaTypes) => {
@@ -21,7 +21,7 @@ const postReducer = (state: PostState = postState, action: PostActionTypes | Pos
       return {
         ...state,
         posts: action.payload,
-        postsLoading: false
+        postsLoading: true
       };
     default:
       return state

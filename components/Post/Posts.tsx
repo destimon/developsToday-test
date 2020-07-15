@@ -1,32 +1,38 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
-import { State, StoreState } from '../../store/types';
+import { StoreState } from '../../store/types';
 import { getPostsAsync } from '../../store/actions/postActions'
-import { Post } from '../../interfaces';
+import { PostType } from '../../interfaces';
+import PostItem from './PostItem';
+import { List } from '@material-ui/core';
 
 interface Props {
   getPostsAsync: () => void,
   post: {
-    posts: Post[]
+    posts: PostType[],
+    postsLoading: boolean
   }
 }
 
 const Posts = (props: Props) => {
   const {
     getPostsAsync,
-    post: { posts }
+    post: { posts, postsLoading }
   } = props;
 
   useEffect(() => {
     getPostsAsync();
+    console.log(postsLoading)
   }, [])
 
+  if (postsLoading) return <p>Loading...</p>
+
   return (
-    <div>
+    <List>
       {
-        posts.map((post: Post) => <p>{post.title}</p>)
+        posts.map((post: PostType, index: number) => <PostItem key={index} post={post} />)
       }
-    </div>
+    </List>
   )
 }
 
