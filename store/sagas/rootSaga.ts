@@ -1,15 +1,11 @@
 import { all } from 'redux-saga/effects'
 import { 
-  watchLoadUserAsync,
-  watchSignInUserAsync,
-  watchSignUpUserAsync
+  watchGetPostsAsync
 } from './postSaga';
 
 // Export root saga
 export default function* rootSaga() {
   yield all([
-    watchLoadUserAsync(),
-    watchSignInUserAsync(),
-    watchSignUpUserAsync()
+    watchGetPostsAsync()
   ])
 }

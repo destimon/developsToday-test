@@ -1,21 +1,26 @@
 import Link from 'next/link'
 import Layout from '../components/Layout'
 import withRedux from "next-redux-wrapper";
-import makeStore from '../store/index';
+import {wrapper} from '../store/index';
 import { NextPage } from 'next';
-import { GET_POSTS } from '../store/types';
+import { getPostsAsync } from '../store/actions/postActions';
+import { connect, Provider } from 'react-redux';
+import { State } from '../store/types';
+import { useEffect } from 'react';
 
-const IndexPage: NextPage = () => (
-  <Layout>
-    <h1>Hello!</h1>
-  </Layout>
-)
+const IndexPage: NextPage = () => {
+  return (
+    <Layout>
+      <h1>Hello!</h1>
+    </Layout>
+  )
+}
 
-IndexPage.getInitialProps = ({store}) => {
-  // component will read from store's state when rendered
-  store.dispatch({type: GET_POSTS});
-  // pass some custom props to component from here
-  return {custom: 'custom'}; 
-};
+// export const getServerSideProps = wrapper.getServerSideProps(
+//   ({store}) => {
+//     console.log('2. Page.getServerSideProps uses the store to dispatch things');
+//     store.dispatch(getPostsAsync());
+//   }
+// );
 
-export default withRedux(makeStore)(IndexPage);
+export default connect((state: State) => state)(IndexPage);

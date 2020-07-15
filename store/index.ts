@@ -2,17 +2,22 @@ import { createStore, applyMiddleware } from "redux";
 import rootReducer from './reducers/index';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga'
+import rootSaga from "./sagas/rootSaga";
+import { MakeStore, createWrapper } from "next-redux-wrapper";
 
-const sagaMiddleware = createSagaMiddleware()
+const makeStore: MakeStore<object> = (initialState: object) => {
+  const sagaMiddleware = createSagaMiddleware()
 
-const makeStore = (initialState: object) => {
-  return createStore(
-      rootReducer, 
-      initialState,
-      composeWithDevTools(applyMiddleware(sagaMiddleware))
-    );
+  const store = createStore(
+    rootReducer, 
+    initialState,
+    applyMiddleware(sagaMiddleware)
+  );
+
+  sagaMiddleware.run(rootSaga);
+  return store;
 };
 
-sagaMiddleware.run();
-
-export default makeStore;
+export const store = makeStore({});
+// export an assembled wrapper
+export const wrapper = createWrapper<object>(makeStore, {debug: true});

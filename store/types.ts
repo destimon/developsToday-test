@@ -9,7 +9,8 @@ export interface State {
 }
 
 interface GetPosts {
-  type: typeof GET_POSTS
+  type: typeof GET_POSTS,
+  payload: Post[]
 }
 
 export type PostActionTypes = GetPosts;
