@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { connect } from 'react-redux';
 import { StoreState } from '../../store/types';
 import { getPostsAsync } from '../../store/actions/postActions'
@@ -7,6 +7,7 @@ import PostItem from './PostItem';
 import { List } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { takeRight, reverse } from 'lodash/fp';
 
 interface Props {
   getPostsAsync: () => void,
@@ -26,13 +27,17 @@ const Posts: React.FC<Props> = ({
     getPostsAsync();
   }, [])
 
+  const takeLatest = useMemo(() => {
+    return reverse(takeRight(8, posts));
+  }, [posts])
+
   if (postsLoading) return <CircularProgress />
 
   return (
     <Grid item md={4}>
       <List>
         {
-          posts.map((post: PostType) => <PostItem key={post.id} post={post} />)
+          takeLatest.map((post: PostType) => <PostItem key={post.id} post={post} />)
         }
       </List>
     </Grid>

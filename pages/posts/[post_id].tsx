@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { GetServerSideProps } from 'next'
 import axios from 'axios';
 import { PostType } from '../../interfaces';
@@ -10,10 +10,6 @@ interface Props {
 }
 
 const post_id: React.FC<Props> = ({ post }) => {
-  useEffect(() => {
-    console.log(post)
-  }, [])
-
   return (
     <Layout>
       {
