@@ -10,9 +10,9 @@ import axios from 'axios';
 // Get posts from API
 function* getPostsAsync() {
   try {
+    yield put(setPostsLoading());
     const { data } = yield call(() => (axios.get('https://simple-blog-api.crew.red/posts')))
     
-    yield put(setPostsLoading());
     yield put(getPosts(data));
   } catch (err) {
 

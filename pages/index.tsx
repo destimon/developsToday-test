@@ -1,7 +1,7 @@
 import Layout from '../components/Layout'
 import { NextPage } from 'next';
 import { connect } from 'react-redux';
-import { State } from '../store/types';
+import { StoreState } from '../store/types';
 import Posts from '../components/Post/Posts'
 import { Container } from '@material-ui/core';
 
@@ -23,4 +23,4 @@ const IndexPage: NextPage = () => {
 //   }
 // );
 
-export default connect((state: State) => state)(IndexPage);
+export default connect((state: StoreState) => state)(IndexPage);

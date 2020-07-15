@@ -1,6 +1,7 @@
 import React from 'react'
 import { PostType } from '../../interfaces'
 import ListItem from '@material-ui/core/ListItem';
+import { Divider } from '@material-ui/core';
 
 interface Props {
   post: PostType
@@ -8,7 +9,7 @@ interface Props {
 
 const PostItem: React.FC<Props> = ({ post }) => {
   return (
-    <ListItem>
+    <ListItem button >
       { post.title }
     </ListItem>
   )
