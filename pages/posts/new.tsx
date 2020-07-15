@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react'
 import Layout from '../../components/Layout'
-import Router from 'next/router';
-import { Formik, Form, Field, FormikHelpers } from 'formik';
+import { Formik, Form, Field, FormikHelpers, FormikErrors } from 'formik';
 import { PostType } from '../../interfaces';
+import { FormikTextField } from 'formik-material-fields';
+import { Grid, Button } from '@material-ui/core';
 
 const AddNewPost: React.FC = () => {
   const initialValues: PostType = {
@@ -10,14 +11,10 @@ const AddNewPost: React.FC = () => {
     title: '',
     body: '',
     author: '',
-    date: new Date()
   }
 
   const validateForm = useCallback((values: PostType) => {
-    const errors = {
-      title: '',
-      body: ''
-    };
+    const errors: FormikErrors<{ title: string, body: string}>  = {};
     if (!values.title) {
       errors.title = '* Title is required!'
     }
@@ -31,35 +28,43 @@ const AddNewPost: React.FC = () => {
     <Layout>
       <h1>Add new post</h1>
       <Formik
-       initialValues={initialValues}
-       validate={validateForm}
-       onSubmit={(
+        initialValues={initialValues}
+        validate={validateForm}
+        onSubmit={(
           values: PostType,
           { setSubmitting }: FormikHelpers<PostType>
         ) => {
+          console.log('Submit')
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 500);
         }}
       >
-        <Form>
-          <label htmlFor="firstName">First Name</label>
-          <Field id="firstName" name="firstName" placeholder="John" />
+        <Grid item md={4}>
+          <Form>
+            <FormikTextField
+              name="title"
+              label="Title"
+              margin="normal"
+              fullWidth
+            />
+            <FormikTextField
+              name="body"
+              label="Body"
+              margin="normal"
+              fullWidth
+            />
+            <FormikTextField
+              name="author"
+              label="Author"
+              margin="normal"
+              fullWidth
+            />
 
-          <label htmlFor="lastName">Last Name</label>
-          <Field id="lastName" name="lastName" placeholder="Doe" />
-
-          <label htmlFor="email">Email</label>
-          <Field
-            id="email"
-            name="email"
-            placeholder="john@acme.com"
-            type="email"
-          />
-
-          <button type="submit">Submit</button>
-        </Form>
+            <Button fullWidth variant="contained" color="primary" type="submit">Submit</Button>
+          </Form>
+        </Grid>
       </Formik>
     </Layout>
   )
