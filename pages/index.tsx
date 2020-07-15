@@ -3,13 +3,14 @@ import { NextPage } from 'next';
 import { connect } from 'react-redux';
 import { StoreState } from '../store/types';
 import Posts from '../components/Post/Posts'
-import { Container } from '@material-ui/core';
+import { Container, Typography, Divider } from '@material-ui/core';
 
 const IndexPage: NextPage = () => {
   return (
     <Layout>
       <Container>
-        <h1>Posts page</h1>
+        <Typography variant="h3" component="h2">List of posts</Typography>
+        <Divider></Divider>
         <Posts />
       </Container>
     </Layout>

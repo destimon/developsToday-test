@@ -3,15 +3,22 @@ import Layout from '../../components/Layout'
 import { Formik, Form, FormikHelpers, FormikErrors } from 'formik';
 import { PostType } from '../../interfaces';
 import { FormikTextField } from 'formik-material-fields';
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, Typography } from '@material-ui/core';
 import { addPostAsync } from '../../store/actions/postActions';
 import { connect } from 'react-redux';
+import { PostState } from '../../store/types';
 
 interface Props {
-  addPostAsync: (formData: PostType) => void
+  addPostAsync: (formData: PostType) => void,
+  post: {
+    postAddLoading: boolean,
+    postAddError: string
+  }
 }
 
-const AddNewPost: React.FC<Props> = ({ addPostAsync }) => {
+const AddNewPost: React.FC<Props> = ({ 
+  addPostAsync, post: { postAddLoading, postAddError }
+}) => {
   const initialValues: PostType = {
     title: '',
     body: '',
@@ -31,7 +38,7 @@ const AddNewPost: React.FC<Props> = ({ addPostAsync }) => {
 
   return (
     <Layout>
-      <h1>Add new post</h1>
+      <Typography variant="h5" component="h2">Add new post</Typography>
       <Formik
         initialValues={initialValues}
         validate={validateForm}
@@ -72,4 +79,13 @@ const AddNewPost: React.FC<Props> = ({ addPostAsync }) => {
   )
 }
 
-export default connect(null, { addPostAsync })(AddNewPost);
+const mapStateToProps = (state: PostState) => {
+  return {
+    post: {
+      addPostLoading: state.addPostLoading,
+      addPostError: state.addPostError
+    }
+  }
+}
+
+export default connect(mapStateToProps, { addPostAsync })(AddNewPost);
