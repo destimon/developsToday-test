@@ -11,6 +11,7 @@ export const ADD_POST = 'ADD_POST';
 export const SET_ADD_POST_LOADING = 'SET_ADD_POST_LOADING';
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
 export const ADD_POST_FAILURE = 'ADD_POST_FAILURE';
+export const CLEAR_ADD_POST_RESULT = 'CLEAR_ADD_POST_RESULT';
 
 export interface PostState {
   posts: PostType[],
@@ -23,6 +24,10 @@ export interface StoreState {
   post: {
     posts: PostType[]
   } | {}
+}
+
+interface ClearAddPostResult {
+  type: typeof CLEAR_ADD_POST_RESULT
 }
 
 interface AddPost {
@@ -57,4 +62,5 @@ GetPosts
 | AddPost
 | AddPostSuccess
 | AddPostFailure
-| SetAddPostLoading;
+| SetAddPostLoading
+| ClearAddPostResult;

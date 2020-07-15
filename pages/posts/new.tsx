@@ -1,15 +1,15 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import Layout from '../../components/Layout'
 import { Formik, Form, FormikHelpers, FormikErrors } from 'formik';
 import { PostType } from '../../interfaces';
 import { FormikTextField } from 'formik-material-fields';
 import { Grid, Button, Typography } from '@material-ui/core';
-import { addPostAsync } from '../../store/actions/postActions';
+import { addPostAsync, clearAddPostResult } from '../../store/actions/postActions';
 import { connect } from 'react-redux';
-import { PostState, StoreState } from '../../store/types';
 
 interface Props {
   addPostAsync: (formData: PostType) => void,
+  clearAddPostResult: () => void,
   post: {
     addPostLoading: boolean,
     addPostResult: string
@@ -17,13 +17,19 @@ interface Props {
 }
 
 const AddNewPost: React.FC<Props> = ({ 
-  addPostAsync, post: { addPostLoading, addPostResult }
+  addPostAsync, clearAddPostResult, post: { addPostLoading, addPostResult }
 }) => {
   const initialValues: PostType = {
     title: '',
     body: '',
     author: '',
   }
+
+  useEffect(() => {
+    return (() => {
+      clearAddPostResult();
+    })
+  }, [])
 
   const validateForm = useCallback((values: PostType) => {
     const errors: FormikErrors<{ title: string, body: string}>  = {};
@@ -80,10 +86,10 @@ const AddNewPost: React.FC<Props> = ({
   )
 }
 
-const mapStateToProps = (state: StoreState) => {
+const mapStateToProps = (state: Props) => {
   return {
     post: state.post
-  }
+  };
 }
-
-export default connect(mapStateToProps, { addPostAsync })(AddNewPost);
+ 
+export default connect(mapStateToProps, { addPostAsync, clearAddPostResult })(AddNewPost);

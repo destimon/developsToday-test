@@ -39,7 +39,7 @@ const Posts: React.FC<Props> = ({
   )
 }
 
-const mapStateToProps = (state: StoreState) => {
+const mapStateToProps = (state: Props) => {
   return {
     post: state.post
   }

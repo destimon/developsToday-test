@@ -1,4 +1,4 @@
-import { PostActionTypes, SET_POSTS_LOADING, ADD_POST, SET_ADD_POST_LOADING, ADD_POST_SUCCESS, ADD_POST_FAILURE } from '../types';
+import { PostActionTypes, SET_POSTS_LOADING, ADD_POST, SET_ADD_POST_LOADING, ADD_POST_SUCCESS, ADD_POST_FAILURE, CLEAR_ADD_POST_RESULT } from '../types';
 
 import {
   PostState, GET_POSTS
@@ -19,6 +19,11 @@ const postReducer = (state: PostState = postState, action: PostActionTypes | Pos
       return {
         ...state,
         posts: [...state.posts, action.payload],
+        addPostResult: ''
+      }
+    case CLEAR_ADD_POST_RESULT:
+      return {
+        ...state,
         addPostResult: ''
       }
     case SET_ADD_POST_LOADING:
