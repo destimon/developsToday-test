@@ -6,6 +6,7 @@ import { PostType } from '../../interfaces';
 import PostItem from './PostItem';
 import { List } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 interface Props {
   getPostsAsync: () => void,
@@ -25,13 +26,13 @@ const Posts: React.FC<Props> = (props) => {
     getPostsAsync();
   }, [])
 
-  if (postsLoading) return <p>Loading...</p>
+  if (postsLoading) return <CircularProgress />
 
   return (
     <Grid item md={4}>
       <List>
         {
-          posts.map((post: PostType, index: number) => <PostItem key={index} post={post} />)
+          posts.map((post: PostType) => <PostItem key={post.id} post={post} />)
         }
       </List>
     </Grid>
