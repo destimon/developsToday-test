@@ -7,11 +7,13 @@ import { getPostsAsync } from '../store/actions/postActions';
 import { connect, Provider } from 'react-redux';
 import { State } from '../store/types';
 import { useEffect } from 'react';
+import Posts from '../components/Post/Posts'
 
 const IndexPage: NextPage = () => {
   return (
     <Layout>
       <h1>Hello!</h1>
+      <Posts />
     </Layout>
   )
 }
