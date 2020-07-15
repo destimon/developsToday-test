@@ -16,7 +16,21 @@ const post_id: React.FC<Props> = ({ post }) => {
         (post) ? 
         (
           <div>
-            <h2>[{post.id}] {post.title}</h2>
+            <Typography variant="h3">
+              Post #{post.id}
+            </Typography>
+            <Typography variant="h5">
+              Title: {post.title}
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              { post.body }
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              Author: { post.author || 'No author avaliable' }
+            </Typography>
+            <Typography variant="overline" display="block" gutterBottom>
+              { post.date || 'No date avalilable'}
+            </Typography>
           </div>
         )
         :
