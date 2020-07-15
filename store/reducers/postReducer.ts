@@ -1,14 +1,14 @@
-import { PostsActionTypes } from '../types';
+import { PostActionTypes } from '../types';
 
 import {
   State, GET_POSTS
 } from '../types';
 
-export const postsState: State = {
+const postState: State = {
   posts: []
 }
 
-const postsReducer = (state: State = postsState, action: PostsActionTypes) => {
+const postReducer = (state: State = postState, action: PostActionTypes) => {
   switch (action.type) {
     case GET_POSTS:
       return {
@@ -19,4 +19,4 @@ const postsReducer = (state: State = postsState, action: PostsActionTypes) => {
   }
 };
 
-export default postsReducer;
+export default postReducer;

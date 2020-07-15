@@ -12,4 +12,4 @@ interface GetPosts {
   type: typeof GET_POSTS
 }
 
-export type PostsActionTypes = GetPosts;
+export type PostActionTypes = GetPosts;
