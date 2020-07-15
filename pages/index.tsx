@@ -9,7 +9,7 @@ const IndexPage: NextPage = () => {
   return (
     <Layout>
       <Container>
-        <Typography variant="h3" component="h2">List of posts</Typography>
+        <Typography variant="h3" component="h2">Latest posts</Typography>
         <Divider></Divider>
         <Posts />
       </Container>

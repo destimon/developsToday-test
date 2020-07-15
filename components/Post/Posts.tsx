@@ -34,7 +34,7 @@ const Posts: React.FC<Props> = ({
   if (postsLoading) return <CircularProgress />
 
   return (
-    <Grid item md={4}>
+    <Grid item md={8}>
       <List>
         {
           takeLatest.map((post: PostType) => <PostItem key={post.id} post={post} />)

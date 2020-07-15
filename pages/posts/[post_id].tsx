@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next'
 import axios from 'axios';
 import { PostType } from '../../interfaces';
 import Layout from '../../components/Layout';
-import { Typography } from '@material-ui/core';
+import { Typography, Container } from '@material-ui/core';
 
 interface Props {
   post: PostType
@@ -15,7 +15,7 @@ const post_id: React.FC<Props> = ({ post }) => {
       {
         (post) ? 
         (
-          <div>
+          <Container>
             <Typography variant="h3">
               Post #{post.id}
             </Typography>
@@ -31,7 +31,7 @@ const post_id: React.FC<Props> = ({ post }) => {
             <Typography variant="overline" display="block" gutterBottom>
               { post.date || 'No date avalilable'}
             </Typography>
-          </div>
+          </Container>
         )
         :
         (<Typography>Post doesn't exist</Typography>)

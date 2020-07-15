@@ -16,7 +16,7 @@ const PostItem: React.FC<Props> = ({ post }) => {
   return (
     <ListItem button onClick={selectPost}>
       <Typography variant="h5" component="h2">
-        { post.title }
+        [#{post.id}] { post.title }
       </Typography>
     </ListItem>
   )
