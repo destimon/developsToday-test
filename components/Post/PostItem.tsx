@@ -11,7 +11,7 @@ interface Props {
 const PostItem: React.FC<Props> = ({ post }) => {
   const selectPost = useCallback(() => {
     Router.push(`/posts/${post.id}`);
-  }, [])
+  }, [post])
 
   return (
     <ListItem button onClick={selectPost}>
