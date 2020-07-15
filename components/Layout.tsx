@@ -1,17 +1,18 @@
-import React, { ReactNode } from 'react'
+import React, { Fragment, ReactNode } from 'react'
 import Head from 'next/head'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import PostAddIcon from '@material-ui/icons/PostAdd';
-import ButtonLink from './Widgets/ButtonLink';
+import { Button } from '@material-ui/core';
+import Router from 'next/router';
 
 type Props = {
   children?: ReactNode
 }
 
 const Layout: React.FC<Props> = ({children}) => (
-  <div>
+  <Fragment>
     <Head>
       <title>Blog</title>
       <meta charSet="utf-8" />
@@ -24,13 +25,13 @@ const Layout: React.FC<Props> = ({children}) => (
         <Typography variant="h6">
           Blog
         </Typography>
-        <ButtonLink href="/">Home</ButtonLink>
-        <ButtonLink href="/posts/new">New</ButtonLink>
+        <Button onClick={() => {Router.push('/')}}>Home</Button>
+        <Button onClick={() => {Router.push('/posts/new')}}>New post</Button>
       </Toolbar>
     </AppBar>
     </header>
     {children}
-  </div>
+  </Fragment>
 )
 
 export default Layout
