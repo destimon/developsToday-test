@@ -1,9 +1,8 @@
 import Link from 'next/link'
 import Layout from '../components/Layout'
-import Button from '@material-ui/core/Button';
 import withRedux from "next-redux-wrapper";
 import makeStore from '../store/index';
-import { NextPage, NextPageContext } from 'next';
+import { NextPage } from 'next';
 import { GET_POSTS } from '../store/types';
 
 const IndexPage: NextPage = () => (
