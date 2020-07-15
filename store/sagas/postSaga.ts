@@ -1,7 +1,7 @@
 import { put, takeEvery, call } from 'redux-saga/effects'
-import { getPosts, setPostsLoading } from '../actions/postActions';
+import { getPosts, setPostsLoading, setAddPostLoading, addPostFailure, addPostSuccess, addPost } from '../actions/postActions';
 
-import { GET_POSTS_ASYNC } from './types.saga';
+import { GET_POSTS_ASYNC, ADD_POST_ASYNC } from './types.saga';
 
 import axios from 'axios';
 
@@ -19,6 +19,20 @@ function* getPostsAsync() {
   }
 }
 
+function *addPostAsync({payload}) {
+  console.log(payload)
+  try {
+    yield put(setAddPostLoading());
+    const { data } = yield call(() => (axios.post('https://simple-blog-api.crew.red/posts', payload)))
+    
+    yield put(addPost(data));
+    yield put(addPostSuccess())
+  } catch (err) {
+    yield put(addPostFailure())
+  }
+}
+
 // SAGA WATCHERS ---
 
+export function* watchAddPostAsync() { yield takeEvery(ADD_POST_ASYNC, addPostAsync) }
 export function* watchGetPostsAsync() { yield takeEvery(GET_POSTS_ASYNC, getPostsAsync) };

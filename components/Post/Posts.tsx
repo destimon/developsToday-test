@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { connect, ConnectedProps } from 'react-redux';
+import { connect } from 'react-redux';
 import { StoreState } from '../../store/types';
 import { getPostsAsync } from '../../store/actions/postActions'
 import { PostType } from '../../interfaces';
@@ -16,11 +16,11 @@ interface Props {
   }
 }
 
-const Posts: React.FC<Props> = (props) => {
-  const {
-    getPostsAsync,
-    post: { posts, postsLoading }
-  } = props;
+const Posts: React.FC<Props> = ({
+  getPostsAsync,
+  post: { posts, postsLoading }
+}) => {
+
 
   useEffect(() => {
     getPostsAsync();

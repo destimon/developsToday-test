@@ -1,13 +1,18 @@
 import React, { useCallback } from 'react'
 import Layout from '../../components/Layout'
-import { Formik, Form, Field, FormikHelpers, FormikErrors } from 'formik';
+import { Formik, Form, FormikHelpers, FormikErrors } from 'formik';
 import { PostType } from '../../interfaces';
 import { FormikTextField } from 'formik-material-fields';
 import { Grid, Button } from '@material-ui/core';
+import { addPostAsync } from '../../store/actions/postActions';
+import { connect } from 'react-redux';
 
-const AddNewPost: React.FC = () => {
+interface Props {
+  addPostAsync: (formData: PostType) => void
+}
+
+const AddNewPost: React.FC<Props> = ({ addPostAsync }) => {
   const initialValues: PostType = {
-    id: 0,
     title: '',
     body: '',
     author: '',
@@ -34,11 +39,8 @@ const AddNewPost: React.FC = () => {
           values: PostType,
           { setSubmitting }: FormikHelpers<PostType>
         ) => {
-          console.log('Submit')
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 500);
+          addPostAsync(values);
+          setSubmitting(false);
         }}
       >
         <Grid item md={4}>
@@ -70,4 +72,4 @@ const AddNewPost: React.FC = () => {
   )
 }
 
-export default AddNewPost
+export default connect(null, { addPostAsync })(AddNewPost);
