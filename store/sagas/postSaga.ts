@@ -1,5 +1,14 @@
 import { put, takeEvery, call } from 'redux-saga/effects'
-import { getPosts, setPostsLoading, setAddPostLoading, addPostFailure, addPostSuccess, addPost } from '../actions/postActions';
+import { 
+  getPosts, 
+  setPostsLoading, 
+  setAddPostLoading, 
+  addPostFailure, 
+  addPostSuccess, 
+  addPost, 
+  getPostsFailure, 
+  getPostsSuccess
+} from '../actions/postActions';
 
 import { GET_POSTS_ASYNC, ADD_POST_ASYNC, AddPostAsync } from './types.saga';
 import axios from '../../api/api';
@@ -13,8 +22,9 @@ function* getPostsAsync() {
     const { data } = yield call(() => (axios.get('/posts')))
     
     yield put(getPosts(data));
+    yield put(getPostsSuccess());
   } catch (err) {
-
+    yield put(getPostsFailure());
   }
 }
 

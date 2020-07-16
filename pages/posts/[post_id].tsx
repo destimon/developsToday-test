@@ -2,7 +2,7 @@ import React from 'react'
 import { GetServerSideProps } from 'next'
 import axios from 'axios';
 import { PostType } from '../../interfaces';
-import Layout from '../../components/Layout';
+import Layout from '../../components/layouts/DefaultLayout';
 import { Typography, Container } from '@material-ui/core';
 
 interface Props {
@@ -11,32 +11,28 @@ interface Props {
 
 const post_id: React.FC<Props> = ({ post }) => {
   return (
-    <Layout>
-      {
-        (post) ? 
-        (
-          <Container>
-            <Typography variant="h3">
-              Post #{post.id}
-            </Typography>
-            <Typography variant="h5">
-              Title: {post.title}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              { post.body }
-            </Typography>
-            <Typography variant="body2" gutterBottom>
-              Author: { post.author || 'No author avaliable' }
-            </Typography>
-            <Typography variant="overline" display="block" gutterBottom>
-              { post.date || 'No date avalilable'}
-            </Typography>
-          </Container>
-        )
-        :
-        (<Typography>Post doesn't exist</Typography>)
-      }
-    </Layout>
+      (post) ? 
+      (
+        <Layout>
+          <Typography variant="h3">
+            Post #{post.id}
+          </Typography>
+          <Typography variant="h5">
+            Title: {post.title}
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            { post.body }
+          </Typography>
+          <Typography variant="body2" gutterBottom>
+            Author: { post.author || 'No author avaliable' }
+          </Typography>
+          <Typography variant="overline" display="block" gutterBottom>
+            { post.date || 'No date avalilable'}
+          </Typography>
+        </Layout>
+      )
+      :
+      (<Typography>Post doesn't exist</Typography>)
   )
 }
 

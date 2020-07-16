@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import PostAddIcon from '@material-ui/icons/PostAdd';
-import { Button } from '@material-ui/core';
+import { Button, Container } from '@material-ui/core';
 import Router from 'next/router';
 
 type Props = {

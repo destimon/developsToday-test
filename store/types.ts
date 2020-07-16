@@ -52,6 +52,14 @@ interface GetPosts {
   payload: PostType[]
 }
 
+interface GetPostsSuccess {
+  type: typeof GET_POSTS_SUCCESS
+}
+
+interface GetPostsFailure {
+  type: typeof GET_POSTS_FAILURE
+}
+
 interface SetPostsLoading {
   type: typeof SET_POSTS_LOADING
 }
@@ -63,4 +71,6 @@ GetPosts
 | AddPostSuccess
 | AddPostFailure
 | SetAddPostLoading
-| ClearAddPostResult;
+| ClearAddPostResult
+| GetPostsSuccess
+| GetPostsFailure;

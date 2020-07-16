@@ -1,4 +1,4 @@
-import Layout from '../components/Layout'
+import Layout from '../components/layouts/DefaultLayout'
 import { NextPage } from 'next';
 import { connect } from 'react-redux';
 import { StoreState } from '../store/types';

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import Layout from '../../components/Layout'
+import Layout from '../../components/layouts/DefaultLayout'
 import { Formik, Form, FormikHelpers, FormikErrors } from 'formik';
 import { PostType } from '../../interfaces';
 import { FormikTextField } from 'formik-material-fields';
