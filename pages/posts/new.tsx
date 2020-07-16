@@ -79,7 +79,11 @@ const AddNewPost: React.FC<Props> = ({
 
             <Button fullWidth variant="contained" color="primary" type="submit">Submit</Button>
           </Form>
-          <Typography variant="h5">{ addPostResult }</Typography>
+          <Typography variant="h5">
+          { 
+            (addPostLoading) ? ('Processing') : (addPostResult)
+          }
+          </Typography>
         </Grid>
       </Formik>
     </Layout>

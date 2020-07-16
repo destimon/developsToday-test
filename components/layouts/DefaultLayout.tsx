@@ -3,8 +3,7 @@ import Head from 'next/head'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import PostAddIcon from '@material-ui/icons/PostAdd';
-import { Button, Container } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import Router from 'next/router';
 
 type Props = {
@@ -21,7 +20,6 @@ const Layout: React.FC<Props> = ({children}) => (
     <header>
     <AppBar position="static">
       <Toolbar>
-        <PostAddIcon />
         <Typography variant="h6">
           Blog
         </Typography>
