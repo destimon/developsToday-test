@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo } from 'react'
 import { connect } from 'react-redux';
-import { StoreState } from '../../store/types';
 import { getPostsAsync } from '../../store/actions/postActions'
 import { PostType } from '../../interfaces';
 import PostItem from './PostItem';

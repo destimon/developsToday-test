@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { PostType } from '../../interfaces'
 import { Typography } from '@material-ui/core'
 import { Content } from './Post.styled';
