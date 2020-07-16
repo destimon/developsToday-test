@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react'
 import { PostType } from '../../interfaces'
-import ListItem from '@material-ui/core/ListItem';
-import Typography from '@material-ui/core/Typography';
-import Router from 'next/router';
+import ListItem from '@material-ui/core/ListItem'
+import Typography from '@material-ui/core/Typography'
+import Router from 'next/router'
 
 interface Props {
   post: PostType
@@ -10,7 +10,7 @@ interface Props {
 
 const PostItem: React.FC<Props> = ({ post }) => {
   const selectPost = useCallback(() => {
-    Router.push(`/posts/${post.id}`);
+    Router.push(`/posts/${post.id}`)
   }, [post])
 
   return (

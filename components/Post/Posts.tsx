@@ -1,9 +1,9 @@
 import React from 'react'
-import { PostType } from '../../interfaces';
-import PostItem from './PostItem';
-import { List } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { PostType } from '../../interfaces'
+import PostItem from './PostItem'
+import { List } from '@material-ui/core'
+import Grid from '@material-ui/core/Grid'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 interface Props {
   postsLoading: boolean,

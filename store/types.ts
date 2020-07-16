@@ -1,19 +1,19 @@
 import {
   PostType
-} from '../interfaces/index';
+} from '../interfaces/index'
 
 // Variables ---
 
-export const GET_POSTS = 'GET_POSTS';
-export const SET_POSTS_LOADING = 'SET_POSTS_LOADING';
-export const GET_POSTS_SUCCESS = 'GET_POSTS_SUCCESS';
-export const GET_POSTS_FAILURE = 'GET_POSTS_FAILURE';
+export const GET_POSTS = 'GET_POSTS'
+export const SET_POSTS_LOADING = 'SET_POSTS_LOADING'
+export const GET_POSTS_SUCCESS = 'GET_POSTS_SUCCESS'
+export const GET_POSTS_FAILURE = 'GET_POSTS_FAILURE'
 
-export const ADD_POST = 'ADD_POST';
-export const SET_ADD_POST_LOADING = 'SET_ADD_POST_LOADING';
-export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
-export const ADD_POST_FAILURE = 'ADD_POST_FAILURE';
-export const CLEAR_ADD_POST_RESULT = 'CLEAR_ADD_POST_RESULT';
+export const ADD_POST = 'ADD_POST'
+export const SET_ADD_POST_LOADING = 'SET_ADD_POST_LOADING'
+export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS'
+export const ADD_POST_FAILURE = 'ADD_POST_FAILURE'
+export const CLEAR_ADD_POST_RESULT = 'CLEAR_ADD_POST_RESULT'
 
 // Store/reducer States
 
@@ -70,9 +70,9 @@ interface SetPostsLoading {
   type: typeof SET_POSTS_LOADING
 }
 
-export type PostActionTypes = 
-GetPosts 
-| SetPostsLoading 
+export type PostActionTypes =
+GetPosts
+| SetPostsLoading
 | AddPost
 | AddPostSuccess
 | AddPostFailure

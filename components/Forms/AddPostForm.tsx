@@ -1,9 +1,9 @@
 import React from 'react'
-import { FormikTextField } from 'formik-material-fields';
-import { Grid, Button, Typography } from '@material-ui/core';
-import { Formik, Form, FormikHelpers, FormikErrors } from 'formik';
-import { PostType } from '../../interfaces';
-import { FormStyle } from './AddPostForm.styled';
+import { FormikTextField } from 'formik-material-fields'
+import { Grid, Button, Typography } from '@material-ui/core'
+import { Formik, Form, FormikHelpers, FormikErrors } from 'formik'
+import { PostType } from '../../interfaces'
+import { FormStyle } from './AddPostForm.styled'
 
 interface Props {
   initialValues: PostType,
@@ -16,7 +16,7 @@ interface Props {
   addPostResult: string
 }
 
-const AddPostForm: React.FC<Props> = ({ 
+const AddPostForm: React.FC<Props> = ({
   initialValues, validateForm, addPostLoading,
   addPostResult, formSubmit
 }) => {
@@ -52,9 +52,7 @@ const AddPostForm: React.FC<Props> = ({
             <Button fullWidth variant="contained" color="primary" type="submit">Submit</Button>
           </Form>
           <Typography variant="h5">
-          { 
-            (addPostLoading) ? ('Processing') : (addPostResult)
-          }
+            { (addPostLoading) ? ('Processing') : (addPostResult) }
           </Typography>
         </Grid>
       </Formik>
@@ -62,6 +60,4 @@ const AddPostForm: React.FC<Props> = ({
   )
 }
 
-
-
-export default (AddPostForm);
+export default (AddPostForm)

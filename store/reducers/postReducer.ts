@@ -1,18 +1,18 @@
-import { PostActionTypes, 
-  SET_POSTS_LOADING, 
-  ADD_POST, 
-  SET_ADD_POST_LOADING, 
-  ADD_POST_SUCCESS, 
-  ADD_POST_FAILURE, 
-  CLEAR_ADD_POST_RESULT, 
-  GET_POSTS_SUCCESS, 
-  GET_POSTS_FAILURE 
-} from '../types';
-
 import {
+  PostActionTypes,
+  SET_POSTS_LOADING,
+  ADD_POST,
+  SET_ADD_POST_LOADING,
+  ADD_POST_SUCCESS,
+  ADD_POST_FAILURE,
+  CLEAR_ADD_POST_RESULT,
+  GET_POSTS_SUCCESS,
+  GET_POSTS_FAILURE
+  ,
   PostState, GET_POSTS
-} from '../types';
-import { PostActionSagaTypes } from '../sagas/types.saga';
+} from '../types'
+
+import { PostActionSagaTypes } from '../sagas/types.saga'
 
 const postState: PostState = {
   posts: [],
@@ -71,11 +71,11 @@ const postReducer = (state: PostState = postState, action: PostActionTypes | Pos
     case GET_POSTS:
       return {
         ...state,
-        posts: action.payload,
-      };
+        posts: action.payload
+      }
     default:
       return state
   }
-};
+}
 
-export default postReducer;
+export default postReducer

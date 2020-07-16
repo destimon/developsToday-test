@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux';
-import postReducer from './postReducer';
+import { combineReducers } from 'redux'
+import postReducer from './postReducer'
 
 const rootReducer = combineReducers({
   post: postReducer
@@ -7,4 +7,4 @@ const rootReducer = combineReducers({
   // reducers if that would be commercical project
 })
 
-export default rootReducer;
+export default rootReducer

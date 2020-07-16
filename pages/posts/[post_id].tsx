@@ -1,25 +1,24 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
-import axios from 'axios';
-import { PostType } from '../../interfaces';
-import Layout from '../../components/layouts/DefaultLayout';
-import { Typography } from '@material-ui/core';
-import Post from '../../components/Post/Post';
+import axios from 'axios'
+import { PostType } from '../../interfaces'
+import Layout from '../../components/layouts/DefaultLayout'
+import { Typography } from '@material-ui/core'
+import Post from '../../components/Post/Post'
 
 interface Props {
   post: PostType
 }
 
-const post_id: React.FC<Props> = ({ post }) => {
+const postId: React.FC<Props> = ({ post }) => {
   return (
-    (post) ? 
-    (
-      <Layout>
-        <Post post={post} />
-      </Layout>
-    )
-    :
-    (<Typography>Post doesn't exist</Typography>)
+    (post)
+      ? (
+        <Layout>
+          <Post post={post} />
+        </Layout>
+      )
+      : (<Typography>Post doesnt exist</Typography>)
   )
 }
 
@@ -28,7 +27,7 @@ const post_id: React.FC<Props> = ({ post }) => {
 // Not sure is this required
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
-    if (!context.params) return { props: { post: null }}
+    if (!context.params) return { props: { post: null } }
     const res = await axios.get(`https://simple-blog-api.crew.red/posts/${context.params.post_id}?_embed=comments`)
 
     return {
@@ -37,8 +36,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
     }
   } catch {
-    return { props: { post: null }}
+    return { props: { post: null } }
   }
 }
 
-export default post_id
+export default postId

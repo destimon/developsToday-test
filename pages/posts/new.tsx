@@ -10,4 +10,4 @@ const AddNewPost: React.FC = () => {
   )
 }
 
-export default AddNewPost;
+export default AddNewPost

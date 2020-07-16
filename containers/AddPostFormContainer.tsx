@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect } from 'react'
-import { FormikErrors, FormikHelpers } from 'formik';
-import { PostType } from '../interfaces';
-import { addPostAsync, clearAddPostResult } from '../store/actions/postActions';
-import { connect } from 'react-redux';
-import AddPostForm from '../components/Forms/AddPostForm';
+import { FormikErrors, FormikHelpers } from 'formik'
+import { PostType } from '../interfaces'
+import { addPostAsync, clearAddPostResult } from '../store/actions/postActions'
+import { connect } from 'react-redux'
+import AddPostForm from '../components/Forms/AddPostForm'
 
 interface Props {
   addPostAsync: (formData: PostType) => void,
@@ -20,36 +20,36 @@ const AddPostFormContainer: React.FC<Props> = ({
   const initialValues: PostType = {
     title: '',
     body: '',
-    author: '',
+    author: ''
   }
 
   useEffect(() => {
-    return (() => {
-      clearAddPostResult();
-    })
+    return () => {
+      clearAddPostResult()
+    }
   }, [])
 
   const formSubmit = useCallback((
     values: PostType,
     { setSubmitting }: FormikHelpers<PostType>
   ) => {
-    addPostAsync(values);
-    setSubmitting(false);
+    addPostAsync(values)
+    setSubmitting(false)
   }, [])
 
   const validateForm = useCallback((values: PostType) => {
-    const errors: FormikErrors<{ title: string, body: string}>  = {};
+    const errors: FormikErrors<{ title: string, body: string}> = {}
     if (!values.title) {
       errors.title = '* Title is required!'
     }
     if (!values.body) {
-      errors.body = '* Body is required!';
+      errors.body = '* Body is required!'
     }
-    return errors;
+    return errors
   }, [])
 
   return (
-    <AddPostForm 
+    <AddPostForm
       initialValues={initialValues}
       validateForm={validateForm}
       addPostLoading={addPostLoading}
@@ -62,7 +62,7 @@ const AddPostFormContainer: React.FC<Props> = ({
 const mapStateToProps = (state: Props) => {
   return {
     post: state.post
-  };
+  }
 }
 
 export default connect(mapStateToProps, { addPostAsync, clearAddPostResult })(AddPostFormContainer)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { PostType } from '../../interfaces'
 import { Typography } from '@material-ui/core'
-import { Content } from './Post.styled';
+import { Content } from './Post.styled'
 
 interface Props {
   post: PostType
