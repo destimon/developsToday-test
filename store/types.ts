@@ -2,6 +2,8 @@ import {
   PostType
 } from '../interfaces/index';
 
+// Variables ---
+
 export const GET_POSTS = 'GET_POSTS';
 export const SET_POSTS_LOADING = 'SET_POSTS_LOADING';
 export const GET_POSTS_SUCCESS = 'GET_POSTS_SUCCESS';
@@ -12,6 +14,8 @@ export const SET_ADD_POST_LOADING = 'SET_ADD_POST_LOADING';
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
 export const ADD_POST_FAILURE = 'ADD_POST_FAILURE';
 export const CLEAR_ADD_POST_RESULT = 'CLEAR_ADD_POST_RESULT';
+
+// Store/reducer States
 
 export interface PostState {
   posts: PostType[],
@@ -25,6 +29,8 @@ export interface StoreState {
     posts: PostType[]
   } | {}
 }
+
+// Actions ---
 
 interface ClearAddPostResult {
   type: typeof CLEAR_ADD_POST_RESULT

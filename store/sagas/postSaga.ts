@@ -28,6 +28,7 @@ function* getPostsAsync() {
   }
 }
 
+// Add post trough API
 function *addPostAsync(action: AddPostAsync) {
   try {
     const { payload } = action;
