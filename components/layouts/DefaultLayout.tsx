@@ -1,14 +1,14 @@
-import React, { Fragment, ReactNode } from 'react'
-import Head from 'next/head'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import { Button } from '@material-ui/core'
-import Router from 'next/router'
+import React, { Fragment, ReactNode } from "react";
+import Head from "next/head";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import { Button } from "@material-ui/core";
+import Router from "next/router";
 
 type Props = {
-  children?: ReactNode
-}
+  children?: ReactNode;
+};
 
 const Layout: React.FC<Props> = ({ children }) => (
   <Fragment>
@@ -20,16 +20,26 @@ const Layout: React.FC<Props> = ({ children }) => (
     <header>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6">
-          Blog
-          </Typography>
-          <Button onClick={() => { Router.push('/') }}>Home</Button>
-          <Button onClick={() => { Router.push('/posts/new') }}>New post</Button>
+          <Typography variant="h6">Blog</Typography>
+          <Button
+            onClick={() => {
+              Router.push("/");
+            }}
+          >
+            Home
+          </Button>
+          <Button
+            onClick={() => {
+              Router.push("/posts/new");
+            }}
+          >
+            New post
+          </Button>
         </Toolbar>
       </AppBar>
     </header>
     {children}
   </Fragment>
-)
+);
 
-export default Layout
+export default Layout;
